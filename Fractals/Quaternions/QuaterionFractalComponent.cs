@@ -27,10 +27,8 @@ namespace SuperSuper.Fractals.Quaternions
             pManager.AddIntegerParameter("MinIterationsFilter", "MinIF", "", GH_ParamAccess.item, 0);
             pManager.AddIntegerParameter("MaxIterationsFilter", "MaxIF", "", GH_ParamAccess.item, 100);
             pManager.AddIntegerParameter("MaxIterations", "MaxI", "", GH_ParamAccess.item, 100);
-            pManager.AddVectorParameter("Vc", "Vc", "", GH_ParamAccess.item);
-            pManager.AddNumberParameter("Wc", "Wc", "", GH_ParamAccess.item);
-            pManager.AddNumberParameter("Wz", "Wz", "", GH_ParamAccess.item);
-            pManager.AddBooleanParameter("DisplayPointCloud", "DPC", "", GH_ParamAccess.item, true);
+            pManager.AddGenericParameter("C_Vector4", "C_Vec", "Vector4 C", GH_ParamAccess.item);
+            pManager.AddNumberParameter("Wz", "Wz", "W part of Vector4 Z", GH_ParamAccess.item);
         }
 
 
@@ -52,10 +50,8 @@ namespace SuperSuper.Fractals.Quaternions
             int minIterationsFilter = 0;
             int maxIterationsFilter = 0;
             int maxIterations = 0;
-            Vector3d Vc = new Vector3d();
-            double Wc = 0;
+            Vector4 cV = new Vector4();
             double Wz = 0;
-            bool display = false;
 
             if (!DA.GetData(0, ref range)) return;
             if (!DA.GetData(1, ref density)) return;
@@ -63,15 +59,12 @@ namespace SuperSuper.Fractals.Quaternions
             if (!DA.GetData(3, ref minIterationsFilter)) return;
             if (!DA.GetData(4, ref maxIterationsFilter)) return;
             if (!DA.GetData(5, ref maxIterations)) return;
-            if (!DA.GetData(6, ref Vc)) return;
-            if (!DA.GetData(7, ref Wc)) return;
-            if (!DA.GetData(8, ref Wz)) return;
-            if (!DA.GetData(9, ref display)) return;
+            if (!DA.GetData(6, ref cV)) return;
+            if (!DA.GetData(7, ref Wz)) return;
 
             var result = new List<(Point3d Point, int StabilityValue)>();
             var pc = new PointCloud();
             var interval = range / (float)density;
-            var cV = new Vector4((float)Vc.X, (float)Vc.Y, (float)Vc.Z, (float)Wc);
             for (double x = -range; x < range; x += interval)
             {
                 for (double y = -range; y < range; y += interval)
@@ -114,8 +107,7 @@ namespace SuperSuper.Fractals.Quaternions
             }
 
             var log = 
-                "cV: " + cV.ToString() + 
-                " Wc: " + Wc.ToString() + 
+                "cV4: " + cV.ToString() + 
                 " Wz: " + Wz.ToString() + 
                 " maxIt: " + maxIterations.ToString() + 
                 " minFilter: " + minIterationsFilter.ToString() + 

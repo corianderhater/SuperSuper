@@ -12,7 +12,7 @@ namespace SuperSuper.Basics
         /// Initializes a new instance of the Vector4Component class.
         /// </summary>
         public Vector4Component()
-          : base("Vector4Component", "V4",
+          : base("Vector4", "Vec4",
               "Constructs Vector4",
               "SuperSuper", "Utilities")
         {
@@ -34,7 +34,7 @@ namespace SuperSuper.Basics
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("Vector4", "v4", "", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Vector4", "Vec4", "", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -43,16 +43,16 @@ namespace SuperSuper.Basics
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            float x = 0;
-            float y = 0;
-            float z = 0;
-            float w = 0;
+            double x = 0;
+            double y = 0;
+            double z = 0;
+            double w = 0;
             if (!DA.GetData(0, ref x)) return;
             if (!DA.GetData(1, ref y)) return;
             if (!DA.GetData(2, ref z)) return;
             if (!DA.GetData(3, ref w)) return;
 
-            DA.SetData(0, new Vector4(x, y, z, w));
+            DA.SetData(0, new Vector4((float)x, (float)y, (float)z, (float)w));
         }
 
         /// <summary>
