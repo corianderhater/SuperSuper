@@ -5,6 +5,8 @@ using Grasshopper.Kernel;
 using Rhino;
 using Rhino.Geometry;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace SuperSuper.Fractals.Quaternions
 {
@@ -65,6 +67,7 @@ namespace SuperSuper.Fractals.Quaternions
             var result = new List<(Point3d Point, int StabilityValue)>();
             var pc = new PointCloud();
             var interval = range / (float)density;
+
             for (double x = -range; x < range; x += interval)
             {
                 for (double y = -range; y < range; y += interval)
