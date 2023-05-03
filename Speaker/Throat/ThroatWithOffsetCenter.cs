@@ -54,32 +54,47 @@ namespace SuperSuper.Speaker.Throat
 
 
 
-            var circles = new List<Curve>();
-            var angle = 90 - hAngle;
-            var x = GetCircleXPosition(angle, centerOffset, throatRadius);
-            var circleCenter = new Point3d(x, -centerOffset, 0);
-            var line = new Line(center.Origin, center.Origin + new Vector3d(1000, 1000 * Math.Tan(angle), 0));
-            var param = line.ClosestParameter(circleCenter);
-            var PT = new Point3d(center.Origin.X + throatRadius, center.OriginY, center.OriginZ);
-            var r = PT.DistanceTo(circleCenter);
+            /*            var circles = new List<Curve>();
+                        var angle = 90 - hAngle;
+                        var x = GetCircleXPosition(Math.PI/2 - angle, centerOffset, throatRadius);
+                        var circleCenter = new Point3d(x, -centerOffset, 0);
+                        var line = new Line(center.Origin, center.Origin + new Vector3d(1000, 1000 * Math.Tan(angle), 0));
+                        var param = line.ClosestParameter(circleCenter);
+                        var PT = new Point3d(center.Origin.X + throatRadius, center.OriginY, center.OriginZ);
+                        var r = PT.DistanceTo(circleCenter);
 
-            var circlePlane = new Plane(circleCenter, Vector3d.ZAxis);
+                        var circlePlane = new Plane(circleCenter, Vector3d.ZAxis);
 
-            var circle = new Circle(circlePlane, r);
+                        var circle = new Circle(circlePlane, r);
 
-            DA.SetData(0, circle);
+                        DA.SetData(0, circle);*/
+            var radians = Rhino.RhinoMath.ToRadians(hAngle);
+            var slope = Math.Tan(hAngle);
+            
+            var circle = GetCircle(slope, new Point3d(throatRadius, 0, 0), centerOffset);
+            var curves = new List<Curve>() { circle.ToNurbsCurve() };
+            DA.SetDataList(0, curves);
         }
 
         private double GetCircleXPosition(double angle, double centerOffset, double throatRadius)
         {
             //x = [a * c + sqrt(c ^ 2 + 1) * b] / (c ^ 2 + 1) or x = [a * c - sqrt(c ^ 2 + 1) * b] / (c ^ 2 + 1)
             //x = xp, a = T, b = D, c = tga
+
             var c = Math.Tan(Rhino.RhinoMath.ToRadians(angle));
             var b = -centerOffset;
             var a = throatRadius;
             //var x = (a * c + Math.Sqrt(Math.Pow(c,2) + 1) * b) / (Math.Pow(c, 2) + 1);
             var x = (a * c - Math.Sqrt(Math.Pow(c,2) + 1) * b) / (Math.Pow(c, 2) + 1);
             return x;
+        }
+
+        private Circle GetCircle(double tan, Point3d pT, double circleOffset)
+        {
+            var pt = new double[] { pT.X, pT.Y};
+            var line = new double[3] { tan, 1, 0 };
+            var c = new TangentialCircle(pt, line);
+            return new Circle(new Point3d(c.Center[0], c.Center[1], 0), c.Radius);
         }
     }
 }
