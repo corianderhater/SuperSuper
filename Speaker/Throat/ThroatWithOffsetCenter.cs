@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 using Grasshopper.Kernel;
 using Rhino.Geometry;
+using Rhino.Input.Custom;
 
 namespace SuperSuper.Speaker.Throat
 {
@@ -33,6 +34,7 @@ namespace SuperSuper.Speaker.Throat
         {
             pManager.AddCurveParameter("C", "C", "", GH_ParamAccess.list);
             pManager.AddBrepParameter("B", "B", "", GH_ParamAccess.list);
+            pManager.AddNumberParameter("xc", "xc", "", GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)
@@ -70,10 +72,11 @@ namespace SuperSuper.Speaker.Throat
                         DA.SetData(0, circle);*/
             var radians = Rhino.RhinoMath.ToRadians(hAngle);
             var slope = Math.Tan(hAngle);
-            
+            var xc = GetCircleX(slope, centerOffset, throatRadius);
             var circle = GetCircle(slope, new Point3d(throatRadius, 0, 0), centerOffset);
             var curves = new List<Curve>() { circle.ToNurbsCurve() };
             DA.SetDataList(0, curves);
+            DA.SetData(2, xc);
         }
 
         private double GetCircleXPosition(double angle, double centerOffset, double throatRadius)
@@ -88,6 +91,15 @@ namespace SuperSuper.Speaker.Throat
             var x = (a * c - Math.Sqrt(Math.Pow(c,2) + 1) * b) / (Math.Pow(c, 2) + 1);
             return x;
         }
+
+        public static double GetCircleX(double angle, double offset, double throatRadius)
+        {
+            double numerator = offset * angle + Math.Sqrt(Math.Pow(offset * angle, 2) - angle * angle * (angle * angle + 1) * (2 * throatRadius * (1 + angle * angle) - (1 + angle * angle) * throatRadius * throatRadius));
+            double denominator = 1 + angle * angle;
+            double x = numerator / denominator;
+            return x;
+        }
+
 
         private Circle GetCircle(double tan, Point3d pT, double circleOffset)
         {
