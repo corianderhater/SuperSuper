@@ -41,8 +41,6 @@ namespace SuperSuper.Basics
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-
-
             var pts = new List<Point3d>();
             var colors = new List<System.Drawing.Color>();
             if (!DA.GetDataList(0, pts)) return;

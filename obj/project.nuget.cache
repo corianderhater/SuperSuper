@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "ikuDc4mkZHx27TcRq7IACTRunSk3BnZRA0FZO02G/8foWnr97UoxF22oZv3d7z4FHRJSgjlBI8GcfIwWhi8Caw==",
+  "dgSpecHash": "qlh07lObQdKQ0riiuZWSZ6Y34iVZuXNyTyywf1eevGwgVKN0OVi4At+7i0yC75hZm1rISgnlRQJ8OcV01KNp0g==",
   "success": true,
   "projectFilePath": "C:\\Users\\pawel\\Documents\\GitHub\\SuperSuper\\SuperSuper.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\pawel\\.nuget\\packages\\grasshopper\\7.13.21348.13001\\grasshopper.7.13.21348.13001.nupkg.sha512",
-    "C:\\Users\\pawel\\.nuget\\packages\\rhinocommon\\7.13.21348.13001\\rhinocommon.7.13.21348.13001.nupkg.sha512"
+    "C:\\Users\\pawel\\.nuget\\packages\\grasshopper\\8.0.23304.9001\\grasshopper.8.0.23304.9001.nupkg.sha512",
+    "C:\\Users\\pawel\\.nuget\\packages\\rhinocommon\\8.0.23304.9001\\rhinocommon.8.0.23304.9001.nupkg.sha512"
   ],
   "logs": []
 }
