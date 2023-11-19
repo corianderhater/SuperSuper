@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Numerics;
-using Grasshopper.Kernel;
+﻿using Grasshopper.Kernel;
 using Rhino;
 using Rhino.Geometry;
+using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
+using System.Numerics;
 
 namespace SuperSuper.Fractals.Quaternions
 {
@@ -75,45 +73,25 @@ namespace SuperSuper.Fractals.Quaternions
                     for (double z = -range; z < range; z += interval)
                     {
                         var zV = new Vector4((float)x, (float)y, (float)z, (float)Wz);
-                        
+
                         var value = Quaternions.ComputeQuaterionStability(zV, cV, maxIterations);
                         if (value >= minIterationsFilter && value <= maxIterationsFilter)
                         {
                             var pt = new Point3d(x, y, z);
                             result.Add((pt, value));
                             var nVal = value / (float)maxIterations;
-                            int rVal = (int)(1/nVal* 255);
-/*                            int r, g, b;
-                            if(nVal < 0.09)
-                            {
-                                r = 255;
-                                g = 0;
-                                b = 0;
-                            }
-                            else if(rVal < 0.9)
-                            {
-                                r = 0;
-                                g = 255;
-                                b = 0;
-                            }
-                            else
-                            {
-                                r = 0;
-                                g = 0;
-                                b = 255;
-                            }*/
-                            //pc.Add(pt, System.Drawing.Color(255, r, g, b));
+                            int rVal = (int)(1 / nVal * 255);
                             pc.Add(pt, System.Drawing.Color.FromArgb(rVal));
                         }
                     }
                 }
             }
 
-            var log = 
-                "cV4: " + cV.ToString() + 
-                " Wz: " + Wz.ToString() + 
-                " maxIt: " + maxIterations.ToString() + 
-                " minFilter: " + minIterationsFilter.ToString() + 
+            var log =
+                "cV4: " + cV.ToString() +
+                " Wz: " + Wz.ToString() +
+                " maxIt: " + maxIterations.ToString() +
+                " minFilter: " + minIterationsFilter.ToString() +
                 " maxFilter: " + maxIterationsFilter.ToString();
 
             DA.SetDataList(0, result.Select(o => o.StabilityValue));
