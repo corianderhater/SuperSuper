@@ -81,26 +81,6 @@ namespace SuperSuper.Fractals.Quaternions
                             result.Add((pt, value));
                             var nVal = value / (float)maxIterations;
                             int rVal = (int)(1 / nVal * 255);
-                            /*                            int r, g, b;
-                                                        if(nVal < 0.09)
-                                                        {
-                                                            r = 255;
-                                                            g = 0;
-                                                            b = 0;
-                                                        }
-                                                        else if(rVal < 0.9)
-                                                        {
-                                                            r = 0;
-                                                            g = 255;
-                                                            b = 0;
-                                                        }
-                                                        else
-                                                        {
-                                                            r = 0;
-                                                            g = 0;
-                                                            b = 255;
-                                                        }*/
-                            //pc.Add(pt, System.Drawing.Color(255, r, g, b));
                             pc.Add(pt, System.Drawing.Color.FromArgb(rVal));
                         }
                     }
