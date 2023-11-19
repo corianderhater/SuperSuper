@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Grasshopper.Kernel;
+﻿using Grasshopper.Kernel;
 using Rhino.Geometry;
+using System;
+using System.Collections.Generic;
 
 namespace SuperSuper.Basics
 {
@@ -57,7 +56,7 @@ namespace SuperSuper.Basics
             }
 
             DA.SetData(0, pc);
-            
+
         }
 
         /// <summary>
