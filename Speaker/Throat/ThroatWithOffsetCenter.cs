@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Grasshopper.Kernel;
+﻿using Grasshopper.Kernel;
 using Rhino.Geometry;
-using Rhino.Input.Custom;
+using System;
+using System.Collections.Generic;
 
 namespace SuperSuper.Speaker.Throat
 {
@@ -89,14 +87,14 @@ namespace SuperSuper.Speaker.Throat
             var b = -centerOffset;
             var a = throatRadius;
             //var x = (a * c + Math.Sqrt(Math.Pow(c,2) + 1) * b) / (Math.Pow(c, 2) + 1);
-            var x = (a * c - Math.Sqrt(Math.Pow(c,2) + 1) * b) / (Math.Pow(c, 2) + 1);
+            var x = ((a * c) - (Math.Sqrt(Math.Pow(c, 2) + 1) * b)) / (Math.Pow(c, 2) + 1);
             return x;
         }
 
         public static double GetCircleX(double angle, double offset, double throatRadius)
         {
-            double numerator = offset * angle + Math.Sqrt(Math.Pow(offset * angle, 2) - angle * angle * (angle * angle + 1) * (2 * throatRadius * (1 + angle * angle) - (1 + angle * angle) * throatRadius * throatRadius));
-            double denominator = 1 + angle * angle;
+            double numerator = (offset * angle) + Math.Sqrt(Math.Pow(offset * angle, 2) - (angle * angle * ((angle * angle) + 1) * ((2 * throatRadius * (1 + (angle * angle))) - ((1 + (angle * angle)) * throatRadius * throatRadius))));
+            double denominator = 1 + (angle * angle);
             double x = numerator / denominator;
             return x;
         }
@@ -104,7 +102,7 @@ namespace SuperSuper.Speaker.Throat
 
         private Circle GetCircle(double tan, Point3d pT, double circleOffset)
         {
-            var pt = new double[] { pT.X, pT.Y};
+            var pt = new double[] { pT.X, pT.Y };
             var line = new double[3] { tan, 1, 0 };
             var c = new TangentialCircle(pt, line);
             return new Circle(new Point3d(c.Center[0], c.Center[1], 0), c.Radius);
