@@ -104,8 +104,9 @@ namespace SuperSuper.Speaker.Throat
         {
             var pt = new double[] { pT.X, pT.Y };
             var line = new double[3] { tan, 1, 0 };
-            var c = new TangentialCircle(pt, line);
-            return new Circle(new Point3d(c.Center[0], c.Center[1], 0), c.Radius);
+            //var c = new TangentialCircle(pt, line);
+            //return new Circle(new Point3d(c.Center[0], c.Center[1], 0), c.Radius);
+            return new Circle();
         }
     }
 }

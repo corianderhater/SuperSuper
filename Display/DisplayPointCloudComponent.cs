@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Grasshopper.Kernel;
+﻿using Grasshopper.Kernel;
 using Rhino.Geometry;
+using System;
 
 namespace SuperSuper.Display
 {
     public class DisplayPointCloudComponent : GH_Component
     {
-        public DisplayPointCloud Conduit { get; set; }
+        public DisplayPointCloud Conduit { get; private set; }
         /// <summary>
         /// Initializes a new instance of the DisplayPointCloudComponent class.
         /// </summary>
@@ -18,7 +16,6 @@ namespace SuperSuper.Display
               "Description",
               "SuperSuper", "Display")
         {
-            Conduit = new DisplayPointCloud();
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
@@ -38,16 +35,20 @@ namespace SuperSuper.Display
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             PointCloud pc = new PointCloud();
-            
             double size = 0;
+            bool isOn = false;
+
             if (!DA.GetData(0, ref pc)) return;
             if (!DA.GetData(1, ref size)) return;
+            if (!DA.GetData(2, ref isOn)) return;
+
+            Conduit = DisplayPointCloud.GetInstance();
 
             this.Conduit.PC = pc;
             this.Conduit.Size = (float)size;
-            this.Conduit.Enabled = true;
-            Rhino.RhinoDoc.ActiveDoc.Views.Redraw();
+            this.Conduit.Enabled = isOn;
 
+            Rhino.RhinoDoc.ActiveDoc.Views.Redraw();
 
         }
 

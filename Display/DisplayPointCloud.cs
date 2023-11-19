@@ -1,21 +1,25 @@
-﻿using Rhino.Geometry;
-using Rhino.Display;
+﻿using Rhino.Display;
+using Rhino.Geometry;
 
 namespace SuperSuper.Display
 {
 
-    public class DisplayPointCloud : DisplayConduit
+    public sealed class DisplayPointCloud : DisplayConduit
     {
-
+        private static DisplayPointCloud _instance;
         public PointCloud PC { get; set; }
         public float Size { get; set; }
-        public DisplayPointCloud()
+
+        public static DisplayPointCloud GetInstance()
         {
-            PC = new PointCloud
-            {
-                { new Point3d(0, 0, 0), System.Drawing.Color.Red }
-            };
-            Size = (float)22.12;
+            _instance ??= new DisplayPointCloud();
+            return _instance;
+        }
+
+        public void Preview(PointCloud pc, float size)
+        {
+            PC = pc;
+            Size = size;
         }
 
         protected override void PreDrawObjects(DrawEventArgs e)
@@ -28,7 +32,7 @@ namespace SuperSuper.Display
         {
             base.CalculateBoundingBox(e);
             e.IncludeBoundingBox(PC.GetBoundingBox(true));
-            
+
         }
     }
 }

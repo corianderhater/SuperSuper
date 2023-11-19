@@ -6,10 +6,11 @@
     <Title>SuperSuper</Title>
     <Description>Description of SuperSuper</Description>
     <TargetExt>.gha</TargetExt>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   
   <ItemGroup>
-    <PackageReference Include="Grasshopper" Version="7.13.21348.13001" IncludeAssets="compile;build" />
+    <PackageReference Include="Grasshopper" Version="7.34.23267.11001" IncludeAssets="compile;build" />
   </ItemGroup>
   
   <PropertyGroup Condition="$(Configuration) == 'Debug' AND $([MSBuild]::IsOSPlatform(Windows))">
