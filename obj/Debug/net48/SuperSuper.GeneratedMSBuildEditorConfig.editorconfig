@@ -1,3 +1,5 @@
 is_global = true
 build_property.RootNamespace = SuperSuper
 build_property.ProjectDir = C:\Users\pawel\Documents\GitHub\SuperSuper\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
