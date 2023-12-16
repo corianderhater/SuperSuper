@@ -1,15 +1,8 @@
-C:\Users\pawel\Documents\GitHub\SuperSuper\SuperSuper\bin\Debug\net48\SuperSuper.gha
-C:\Users\pawel\Documents\GitHub\SuperSuper\SuperSuper\bin\Debug\net48\SuperSuper.pdb
-C:\Users\pawel\Documents\GitHub\SuperSuper\SuperSuper\obj\Debug\net48\SuperSuper.csproj.AssemblyReference.cache
-C:\Users\pawel\Documents\GitHub\SuperSuper\SuperSuper\obj\Debug\net48\SuperSuper.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\pawel\Documents\GitHub\SuperSuper\SuperSuper\obj\Debug\net48\SuperSuper.AssemblyInfoInputs.cache
-C:\Users\pawel\Documents\GitHub\SuperSuper\SuperSuper\obj\Debug\net48\SuperSuper.AssemblyInfo.cs
-C:\Users\pawel\Documents\GitHub\SuperSuper\SuperSuper\obj\Debug\net48\SuperSuper.csproj.CoreCompileInputs.cache
-C:\Users\pawel\Documents\GitHub\SuperSuper\SuperSuper\obj\Debug\net48\SuperSuper.gha
-C:\Users\pawel\Documents\GitHub\SuperSuper\SuperSuper\obj\Debug\net48\SuperSuper.pdb
 C:\Users\pawel\Documents\GitHub\SuperSuper\bin\Debug\net48\SuperSuper.gha
 C:\Users\pawel\Documents\GitHub\SuperSuper\bin\Debug\net48\SuperSuper.pdb
 C:\Users\pawel\Documents\GitHub\SuperSuper\obj\Debug\net48\SuperSuper.csproj.AssemblyReference.cache
+C:\Users\pawel\Documents\GitHub\SuperSuper\obj\Debug\net48\SuperSuper.Properties.Resources.resources
+C:\Users\pawel\Documents\GitHub\SuperSuper\obj\Debug\net48\SuperSuper.csproj.GenerateResource.cache
 C:\Users\pawel\Documents\GitHub\SuperSuper\obj\Debug\net48\SuperSuper.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\pawel\Documents\GitHub\SuperSuper\obj\Debug\net48\SuperSuper.AssemblyInfoInputs.cache
 C:\Users\pawel\Documents\GitHub\SuperSuper\obj\Debug\net48\SuperSuper.AssemblyInfo.cs
