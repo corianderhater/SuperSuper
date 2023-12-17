@@ -16,3 +16,4 @@ C:\Users\pawel\Documents\GitHub\SuperSuper\obj\Debug\net48\SuperSuper.AssemblyIn
 C:\Users\pawel\Documents\GitHub\SuperSuper\obj\Debug\net48\SuperSuper.csproj.CoreCompileInputs.cache
 C:\Users\pawel\Documents\GitHub\SuperSuper\obj\Debug\net48\SuperSuper.gha
 C:\Users\pawel\Documents\GitHub\SuperSuper\obj\Debug\net48\SuperSuper.pdb
+C:\Users\pawel\Documents\GitHub\SuperSuper\obj\Debug\net48\SuperSuper.sourcelink.json
